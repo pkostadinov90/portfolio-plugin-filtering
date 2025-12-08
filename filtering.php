@@ -16,6 +16,12 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+/**
+ * Define plugin constants.
+ */
+define( 'FILTERING_DIR', __DIR__ );
+define( 'FILTERING_URL', plugin_dir_url( __FILE__ ) );
+
 require __DIR__ . '/vendor/autoload.php';
 
 use Filtering\Plugin;
