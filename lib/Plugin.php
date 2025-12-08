@@ -81,7 +81,12 @@ class Plugin {
 	 * @return void
 	 */
 	public function init() {
-		// Runtime bootstrap.
+		new Storage/CasinoPostType();
+
+		new Storage/TypeTaxonomy();
+		new Storage/GameTaxonomy();
+		new Storage/BankingTaxonomy();
+		new Storage/PayoutsTaxonomy();
 	}
 
 }
