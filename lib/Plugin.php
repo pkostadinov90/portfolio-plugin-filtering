@@ -63,7 +63,10 @@ class Plugin {
 	 * @return void
 	 */
 	public static function activate() {
-		// Activation logic.
+		$instance = self::get_instance();
+
+		// Set flag so we can decide in admin whether to display notice.
+		update_option( 'filtering_needs_manual_seeding', 1, false );
 	}
 
 	/**
@@ -81,12 +84,14 @@ class Plugin {
 	 * @return void
 	 */
 	public function init() {
-		new Storage/CasinoPostType();
+		new Storage\CasinoPostType();
 
-		new Storage/TypeTaxonomy();
-		new Storage/GameTaxonomy();
-		new Storage/BankingTaxonomy();
-		new Storage/PayoutsTaxonomy();
+		new Storage\TypeTaxonomy();
+		new Storage\GameTaxonomy();
+		new Storage\BankingTaxonomy();
+		new Storage\PayoutsTaxonomy();
+
+		new SampleData\Seed();
 	}
 
 }
