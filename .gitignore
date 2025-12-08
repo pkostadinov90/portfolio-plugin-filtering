@@ -2,3 +2,7 @@
 vendor
 composer.lock
 
+# Assets
+assets/node_modules
+assets/package.lock
+
