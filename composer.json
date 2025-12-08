@@ -1,0 +1,14 @@
+{
+  "name": "pkostadinov90/portfolio-plugin-filtering",
+  "description": "Your plugin description",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "autoload": {
+    "psr-4": {
+      "Filtering\\": "lib/"
+    }
+  },
+  "require": {
+    "php": ">=8.1"
+  }
+}
