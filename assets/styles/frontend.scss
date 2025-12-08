@@ -1,3 +1,99 @@
 .filtering {
     // filtering styles here
 }
+
+
+.rt-wrapper {
+    --rt-primary-color: 61, 60, 111;
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .rt-quiz-indicators {
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0 0 42px;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: .02px;
+        list-style-type: none;
+        counter-reset: steps;
+        overflow: hidden;
+
+        .rt-quiz-indicator {
+            position: relative;
+
+            &::before,
+            &::after {
+                position: absolute;
+                content: "";
+                bottom: -24px;
+                height: 4px;
+            }
+
+            &::before {
+                left: 4px;
+                right: -4px;
+                background: #f5f5f5;
+            }
+
+            &::after {
+                left: -6px;
+                right: 6px;
+                background: rgb(var(--rt-primary-color));
+                transition: all .2s
+                ease-in-out;
+            }
+
+            &:first-of-type {
+                width: 36px;
+
+                &::after {
+                    left: 6px;
+                }
+            }
+
+            &:not(.rt-quiz-indicator:first-of-type) {
+                width: calc(25% - 9px);
+                flex-grow: 0;
+                flex-shrink: 0;
+                text-align: right;
+            }
+
+            .rt-quiz-indicator-inner {
+                position: relative;
+                white-space: nowrap;
+
+                &::before {
+                    position: absolute;
+                    counter-increment: steps;
+                    content: counter(steps);
+                    bottom: -44px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 36px;
+                    height: 36px;
+                    font-size: 12px;
+                    background: rgb(var(--rt-primary-color));
+                    color: #fff;
+                    border-radius: 50%;
+                    z-index: 1;
+                    transition: all .3s;
+                }
+            }
+
+            &:first-of-type {
+                .rt-quiz-indicator-inner::before {
+                    left: 0;
+                    transform: translateX(0);
+                }
+            }
+        }
+    }
+}
+

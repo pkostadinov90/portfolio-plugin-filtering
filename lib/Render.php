@@ -13,7 +13,7 @@ class Render {
 	}
 
 	public function render() {
-		echo '<div>Filtering Rendered Content</div>';
+		include FILTERING_DIR . '/templates/widget.php';
 	}
 
 }
