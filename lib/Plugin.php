@@ -84,6 +84,8 @@ class Plugin {
 	 * @return void
 	 */
 	public function init() {
+		new ACF\Overrides();
+
 		new Storage\CasinoPostType();
 
 		new Storage\TypeTaxonomy();
