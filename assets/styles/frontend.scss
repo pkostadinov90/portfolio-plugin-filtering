@@ -6,8 +6,23 @@
 .rt-wrapper {
     --rt-primary-color: 61, 60, 111;
 
+    max-width: 1440px;
+    margin: 0 auto 32px;
+    border: 1px solid #dde5e9;
+    background: #fff;
+    box-shadow: 0 8px 24px 0 rgba(var(--rt-primary-color), .15);
+    box-sizing: border-box;
+
     * {
         box-sizing: border-box;
+    }
+
+    .rt-top {
+        padding: 16px;
+
+        @media (min-width: 768px) {
+            padding: 64px 64px 32px;
+        }
     }
 
     .rt-quiz-indicators {
@@ -20,7 +35,7 @@
         letter-spacing: .02px;
         list-style-type: none;
         counter-reset: steps;
-        overflow: hidden;
+        overflow: visible;
 
         .rt-quiz-indicator {
             position: relative;
@@ -93,7 +108,218 @@
                     transform: translateX(0);
                 }
             }
+
+            &.rt--is-active ~ .rt-quiz-indicator {
+                &::after {
+                    right: 120%;
+                }
+
+                .rt-quiz-indicator-inner:before {
+                    background: #f5f5f5;
+                    color: #000;
+                }
+            }
         }
     }
 }
 
+.rt-navigation {
+    position: relative;
+
+    .rt-quiz-restart {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 8px;
+        border: 0;
+        background: rgba(var(--rt-primary-color), .3);
+        color: #fff;
+        font-size: 16px;
+        font-weight: 400;
+        outline: none !important;
+        opacity: 1;
+        visibility: visible;
+        height: 40px;
+        transition: all .3s;
+
+        &.rt--is-hidden {
+            opacity: 0;
+            visibility: hidden;
+            height: 0;
+        }
+    }
+
+    .rt-quiz-back {
+        position: absolute;
+        left: 14px;
+        top: 20px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 48px;
+        height: 48px;
+        padding: 0 18px;
+        border-radius: 70px;
+        border: 0;
+        background: #fff;
+        color: #000;
+        font-size: 16px;
+        font-weight: 700;
+        outline: none !important;
+        opacity: 1;
+        visibility: visible;
+        transition: all .5s;
+
+        @media (min-width: 768px) {
+            left: 20px;
+            width: 72px;
+            height: 72px;
+            padding: 0 28px;
+        }
+
+        &::before {
+            content: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 16L9 3.825L14.6 9.425L16 8L8 0L0 8L1.4 9.425L7 3.825L7 16L9 16Z' fill='%231C1B1F'/%3E%3C/svg%3E%0A");
+            transform: rotate(-90deg);
+        }
+
+        &:disabled {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        span {
+            white-space: nowrap;
+            visibility: hidden;
+            opacity: 0;
+            transition: all .5s;
+        }
+
+        &:hover {
+            width: 138px;
+
+            span {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.rt-main {
+    padding: 16px 8px;
+    background: rgba(var(--rt-primary-color), .05);
+    overflow: hidden;
+
+    @media (min-width: 1025px) {
+        padding: 64px 56px;
+    }
+
+    @media (min-width: 767px) {
+        .rt-main {
+            padding-right: 24px;
+            padding-left: 24px;
+        }
+    }
+
+    .rt-quiz-steps {
+        position: relative;
+
+        .rt-step{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            top: 0;
+            left: 0;
+            right: 0;
+            min-height: 342px;
+            padding: 0 8px;
+            opacity: 0;
+            visibility: hidden;
+            text-align: center;
+            transition: all .3s ease-out;
+            overflow: hidden;
+
+            &.rt--is-active {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .rt-step-options {
+                flex-grow: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 4px;
+
+                @media (min-width: 1025px) {
+                    gap: 24px;
+                }
+
+                @media (min-width: 768px) {
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    gap: 8px;
+                }
+
+                .rt-step-option {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 8px;
+                    width: 100%;
+                    padding: 12px 8px;
+                    border: 1px solid #f5f5f5;
+                    background: #fff;
+                    box-shadow: 0 8px 24px 0 rgba(var(--rt-primary-color), .05);
+                    color: #6b7588;
+                    text-align: center;
+                    transition: all .2s;
+                    cursor: pointer;
+
+                    @media (min-width: 1025px) {
+                        flex-basis: 200px;
+                        padding: 16px;
+                    }
+
+                    @media (min-width: 768px) {
+                        flex-basis: 160px;
+                    }
+
+                    .rt-step-option-icon {
+                        height: 96px;
+                        max-width: 100%;
+                        filter: grayscale(100%);
+                        scale: .85;
+                        transition: all .2s;
+
+                        @media (min-width: 1025px) {
+                            height: 136px;
+                        }
+                    }
+
+                    strong,
+                    span {
+                        font-weight: 700;
+                        text-transform: capitalize;
+                    }
+
+                    span {
+                        font-size: 20px;
+                        line-height: 1;
+                    }
+
+                    input.rt--is-hidden {
+                        position: absolute;
+                        opacity: 0;
+                        visibility: hidden;
+                    }
+                }
+            }
+        }
+    }
+}

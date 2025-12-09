@@ -95,6 +95,8 @@ class Plugin {
 		new Storage\PayoutsTaxonomy();
 
 		new SampleData\Seed();
+
+		new Ajax\Results();
 	}
 
 }

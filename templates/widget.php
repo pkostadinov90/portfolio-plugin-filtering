@@ -31,7 +31,7 @@
 		</div>
 
 		<div class="rt-navigation">
-			<button class="rt-quiz-restart js-rt-quiz-restart Trk-match-restart rt--is-vibrant">
+			<button class="rt-quiz-restart js-rt-quiz-restart Trk-match-restart rt--is-vibrant rt--is-hidden">
 				<img decoding="async" src="https://www.playusa.com/wp-content/plugins/recommendation-tool-plugin/assets/images/restart-icon.svg" alt="Restart icon">
 				<span>Start Over</span>
 			</button>

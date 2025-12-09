@@ -55,6 +55,15 @@ class Assets {
 			$this->get_version( FILTERING_DIR . $js_rel_path ),
 			true
 		);
+
+		wp_localize_script(
+			'filtering-frontend',
+			'FilteringRT',
+			array(
+				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+				'nonce'   => wp_create_nonce( 'filtering_get_result' ),
+			)
+		);
 	}
 
 }
